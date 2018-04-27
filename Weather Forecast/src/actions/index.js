@@ -14,7 +14,7 @@ const API_KEY='5daaa7f52939b28022c0a356ccd9458d';
 export const FETCH_WEATHER = 'FETCH_WEATHER';
 
 // The URL
-const ROOT_URL = `api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
+const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
 
 export function fetchWeather(city){
   // Whenever the fetchWeather API is called, it is passed in the seacrh city name
@@ -25,10 +25,12 @@ export function fetchWeather(city){
   // Use the axios library
   // This axios library returns a promise
   const request = axios.get(url);
-  console.log("The request returned is " + request);
+  console.log("Request is ", request);
 
   return{
     type: FETCH_WEATHER,
+    // We are returning the promise as the payload
+    // However the promise doesn't contain any data yet
     payload: request
   };
 }
